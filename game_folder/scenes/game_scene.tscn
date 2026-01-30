@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://cjb3p7p726yth"]
 
+[ext_resource type="PackedScene" uid="uid://20oxpbvmidip" path="res://game_folder/character/character.tscn" id="1_67iv3"]
+[ext_resource type="PackedScene" uid="uid://dgb24a6oqoas7" path="res://game_folder/objects/level_boundary.tscn" id="2_5dyal"]
+
 [node name="Node2D" type="Node2D" unique_id=1685437083]
+
+[node name="CharacterBody2D" parent="." unique_id=278527332 instance=ExtResource("1_67iv3")]
+position = Vector2(400, 221)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1695149215]
+position = Vector2(573, 329)
+
+[node name="LevelBoundary" parent="." unique_id=2000521273 instance=ExtResource("2_5dyal")]
+position = Vector2(559, 553)
