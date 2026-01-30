@@ -15,6 +15,10 @@ run/main_scene="uid://cjb3p7p726yth"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Jericho/icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
