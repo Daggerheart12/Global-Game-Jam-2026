@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Mask Knight"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[dotnet]
+[physics]
 
-project/assembly_name="Mask Knight"
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
