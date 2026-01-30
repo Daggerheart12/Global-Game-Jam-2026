@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Mask Knight"
+run/main_scene="uid://cjb3p7p726yth"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Jericho/icon.svg"
 
 [physics]
 
