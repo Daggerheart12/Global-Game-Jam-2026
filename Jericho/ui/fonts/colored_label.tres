@@ -1,0 +1,17 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://fso3i8jlnkef"]
+
+[ext_resource type="FontFile" uid="uid://dfdr1wunft1jf" path="res://Jericho/ui/fonts/monogram.ttf" id="1_1h33f"]
+
+[resource]
+font = ExtResource("1_1h33f")
+font_size = 120
+stacked_shadow_count = 3
+stacked_shadow_0/offset = Vector2(0, 4)
+stacked_shadow_0/color = Color(0.047999993, 0.16, 0.04, 1)
+stacked_shadow_0/outline_size = 4
+stacked_shadow_1/offset = Vector2(0, 8)
+stacked_shadow_1/color = Color(0.0192, 0.040320013, 0.16, 1)
+stacked_shadow_1/outline_size = 4
+stacked_shadow_2/offset = Vector2(0, 12)
+stacked_shadow_2/color = Color(0.21, 0.039899997, 0.039899997, 1)
+stacked_shadow_2/outline_size = 4

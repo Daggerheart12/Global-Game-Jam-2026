@@ -7,6 +7,8 @@ bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 6
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nbxx"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bikw8"]
 
 [resource]
@@ -14,6 +16,7 @@ default_font_size = 96
 Button/font_sizes/font_size = 80
 Button/fonts/font = ExtResource("1_bikw8")
 Button/styles/hover = SubResource("StyleBoxFlat_4nbxx")
+Button/styles/normal = SubResource("StyleBoxEmpty_4nbxx")
 Button/styles/pressed = SubResource("StyleBoxEmpty_bikw8")
 Label/font_sizes/font_size = 96
 Label/fonts/font = ExtResource("1_bikw8")
