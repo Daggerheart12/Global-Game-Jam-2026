@@ -7,12 +7,14 @@
 [node name="Node2D" type="Node2D" unique_id=1685437083]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1695149215 node_paths=PackedStringArray("player")]
-position = Vector2(328, 179)
+position = Vector2(337, -205)
 zoom = Vector2(3, 3)
 script = ExtResource("1_cshxh")
 player = NodePath("../Player")
 
-[node name="Player" parent="." unique_id=278527332 instance=ExtResource("1_67iv3")]
-position = Vector2(272, 225)
+[node name="Player" parent="." unique_id=278527332 node_paths=PackedStringArray("tilemap_controller") instance=ExtResource("1_67iv3")]
+position = Vector2(222, -367)
+tilemap_controller = NodePath("../WorldObject")
 
 [node name="WorldObject" parent="." unique_id=1541856081 instance=ExtResource("2_5dyal")]
+position = Vector2(20, -370)

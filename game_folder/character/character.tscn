@@ -6,10 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3akq"]
 size = Vector2(107, 106)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv70r"]
+size = Vector2(140, 120)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332 node_paths=PackedStringArray("s_collider")]
 position = Vector2(2, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_j3akq")
+s_collider = NodePath("Boxcast")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394681761]
 texture = ExtResource("1_8evn6")
@@ -17,3 +21,8 @@ texture = ExtResource("1_8evn6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1059831919]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_j3akq")
+
+[node name="Boxcast" type="ShapeCast2D" parent="." unique_id=703909097]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_hv70r")
+target_position = Vector2(0, 0)
