@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cjb3p7p726yth" path="res://game_folder/scenes/game_scene.tscn" id="4_hm3f5"]
 [ext_resource type="Texture2D" uid="uid://dswdbskejs8e5" path="res://Jericho/castle_tileset.png" id="5_8ajob"]
 [ext_resource type="LabelSettings" uid="uid://fso3i8jlnkef" path="res://Jericho/ui/fonts/colored_label.tres" id="5_jc3um"]
+[ext_resource type="Texture2D" uid="uid://02mccrsgoiyy" path="res://Jericho/Wall Candles.png" id="6_hm3f5"]
+[ext_resource type="Texture2D" uid="uid://b5de52tdkwifm" path="res://Jericho/Vertical Flag.png" id="7_8ymep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc3um"]
 texture = ExtResource("5_8ajob")
@@ -258,8 +260,48 @@ texture = ExtResource("5_8ajob")
 11:16/0 = 0
 12:16/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ymep"]
+texture = ExtResource("6_hm3f5")
+0:0/animation_columns = 4
+0:0/animation_speed = 6.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iboj0"]
+texture = ExtResource("7_8ymep")
+0:0/animation_columns = 8
+0:0/animation_speed = 6.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+0:1/animation_columns = 8
+0:1/animation_speed = 6.0
+0:1/animation_mode = 1
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/animation_frame_6/duration = 1.0
+0:1/animation_frame_7/duration = 1.0
+0:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hm3f5"]
 sources/0 = SubResource("TileSetAtlasSource_jc3um")
+sources/1 = SubResource("TileSetAtlasSource_8ymep")
+sources/2 = SubResource("TileSetAtlasSource_iboj0")
 
 [sub_resource type="Gradient" id="Gradient_6g8ip"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -283,7 +325,7 @@ main_level_scene = ExtResource("4_hm3f5")
 
 [node name="Tilemaps" type="Node2D" parent="." unique_id=680956694]
 
-[node name="BGPropsLayer" type="TileMapLayer" parent="Tilemaps" unique_id=839750228]
+[node name="BGPropsLayerBack" type="TileMapLayer" parent="Tilemaps" unique_id=839750228]
 self_modulate = Color(0.3, 0.3, 0.3, 1)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AABIACgAAAAOAAEAAABIACkAAAAOAAIAAABIACoAAAAOAAMAAAAKAAUAAAAQAAEAAAAKAAYAAAAQAAIAAAAKAAcAAAAQAAMAAAAKAAgAAAAQAAQAAAATAAUAAAAQAAEAAAATAAYAAAAQAAIAAAATAAcAAAAQAAMAAAATAAgAAAAQAAQAAAA=")
@@ -292,7 +334,13 @@ tile_set = SubResource("TileSet_hm3f5")
 [node name="BGLayer" type="TileMapLayer" parent="Tilemaps" unique_id=1975685181]
 self_modulate = Color(0.39, 0.39, 0.39, 1)
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AABIACgAAAAOAAEAAABIACkAAAAOAAIAAABIACoAAAAOAAMAAAAJAAUAAAAJAAEAAAAJAAYAAAAJAAIAAAAJAAcAAAAJAAMAAAAUAAUAAAAJAAEAAAAUAAYAAAAJAAIAAAAUAAcAAAAJAAMAAAAUAAQAAAAJAAEAAAATAAQAAAAHAAEAAAASAAQAAAAHAAEAAAARAAQAAAAHAAEAAAAQAAQAAAAHAAEAAAAPAAQAAAAHAAEAAAAOAAQAAAAHAAEAAAANAAQAAAAHAAEAAAAMAAQAAAAHAAEAAAALAAQAAAAHAAEAAAAKAAQAAAAHAAEAAAAJAAQAAAAJAAEAAAAKAAMAAAAZAA0AAAALAAMAAAAZAA0AAAAMAAMAAAAZAA0AAAANAAMAAAAZAA0AAAAOAAMAAAAZAA0AAAAPAAMAAAAZAA0AABAQAAMAAAAZAA0AABARAAMAAAAZAA0AABASAAMAAAAZAA0AABATAAMAAAAZAA0AABAUAAMAAAAYAA0AABAJAAMAAAAYAA0AAAAKAAgAAAAHAAMAAAALAAgAAAAIAAMAAAATAAgAAAAHAAMAAAASAAgAAAAGAAMAAAAJAAgAAAAGAAMAAAAUAAgAAAAIAAMAAAAUAAkAAAAIAAMAAAAJAAkAAAAIAAMAABAKAAkAAAAHAAMAAAATAAkAAAAHAAMAAAALAAkAAAAGAAMAABASAAkAAAAGAAMAAAAMAAgAAAAHAAIAAAANAAgAAAAHAAIAAAAOAAgAAAAHAAIAAAAPAAgAAAAHAAIAAAAQAAgAAAAHAAIAAAARAAgAAAAHAAIAAAA=")
+tile_map_data = PackedByteArray("AABIACgAAAAOAAEAAABIACkAAAAOAAIAAABIACoAAAAOAAMAAAAJAAUAAAAJAAEAAAAJAAYAAAAJAAIAAAAJAAcAAAAJAAMAAAAUAAUAAAAJAAEAAAAUAAYAAAAJAAIAAAAUAAcAAAAJAAMAAAAUAAQAAAAJAAEAAAATAAQAAAAHAAEAAAASAAQAAAAHAAEAAAARAAQAAAAHAAEAAAAQAAQAAAAHAAEAAAAPAAQAAAAHAAEAAAAOAAQAAAAHAAEAAAANAAQAAAAHAAEAAAAMAAQAAAAHAAEAAAALAAQAAAAHAAEAAAAKAAQAAAAHAAEAAAAJAAQAAAAJAAEAAAAKAAMAAAAZAA0AAAALAAMAAAAZAA0AAAAMAAMAAAAZAA0AAAANAAMAAAAZAA0AAAAOAAMAAAAZAA0AAAAPAAMAAAAZAA0AABAQAAMAAAAZAA0AABARAAMAAAAZAA0AABASAAMAAAAZAA0AABATAAMAAAAZAA0AABAUAAMAAAAYAA0AABAJAAMAAAAYAA0AAAAKAAgAAAAHAAMAAAALAAgAAAAIAAMAAAATAAgAAAAHAAMAAAASAAgAAAAGAAMAAAAJAAgAAAAGAAMAAAAUAAgAAAAIAAMAAAAUAAkAAAAIAAMAAAAJAAkAAAAIAAMAABAKAAkAAAAHAAMAAAATAAkAAAAHAAMAAAALAAkAAAAGAAMAABASAAkAAAAGAAMAAAAMAAgAAAAHAAIAAAANAAgAAAAHAAIAAAAOAAgAAAAHAAIAAAAPAAgAAAAHAAIAAAAQAAgAAAAHAAIAAAARAAgAAAAHAAIAAAATAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_hm3f5")
+
+[node name="BGPropsLayerFront" type="TileMapLayer" parent="Tilemaps" unique_id=456954623]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AABIACgAAAAOAAEAAABIACkAAAAOAAIAAABIACoAAAAOAAMAAAATAAgAAAAQAAQAAAAUAAIAAgAAAAAAAAAUAAMAAgAAAAEAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAEAAAA=")
 tile_set = SubResource("TileSet_hm3f5")
 
 [node name="Lights" type="Node2D" parent="." unique_id=1534532944]
