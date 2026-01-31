@@ -17,6 +17,7 @@ var can_use_queued_jump :bool= false
 
 @export var tilemap_controller :Node2D
 @export var s_collider :ShapeCast2D
+@export var player_sprite :Char
 
 func queue_jump():
 		last_queued_jump = Time.get_ticks_msec()
@@ -133,13 +134,15 @@ func handle_gravity(delta):
 func move():
 	if is_on_wall():
 		move_right = !move_right
-
+		player_sprite.sprite_2d.flip_h = false
 	if move_right:
 		velocity.x = movement_speed
 
 	if !move_right:
 		velocity.x = -movement_speed
+		player_sprite.sprite_2d.flip_h = true
 	
+
 	pass
 	
 var last_time_ms := Time.get_ticks_msec()

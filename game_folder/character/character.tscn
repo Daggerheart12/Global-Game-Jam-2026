@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://20oxpbvmidip"]
 
-[ext_resource type="Texture2D" uid="uid://ddnhrf2vayjmy" path="res://game_folder/character/icon2.svg" id="1_8evn6"]
 [ext_resource type="Script" uid="uid://dcienm8uyx84b" path="res://game_folder/Scripts/character/character_controller.gd" id="1_j3akq"]
+[ext_resource type="PackedScene" uid="uid://b3b8scmlmfyrd" path="res://game_folder/character/littledude.tscn" id="2_j3akq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3akq"]
 size = Vector2(107, 106)
@@ -9,14 +9,14 @@ size = Vector2(107, 106)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv70r"]
 size = Vector2(140, 120)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332 node_paths=PackedStringArray("s_collider")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332 node_paths=PackedStringArray("s_collider", "player_sprite")]
 position = Vector2(2, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_j3akq")
 s_collider = NodePath("Boxcast")
+player_sprite = NodePath("KnightChar")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394681761]
-texture = ExtResource("1_8evn6")
+[node name="KnightChar" parent="." unique_id=1462190310 instance=ExtResource("2_j3akq")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1059831919]
 position = Vector2(-0.5, 0)
