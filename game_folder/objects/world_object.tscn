@@ -560,11 +560,28 @@ texture = ExtResource("1_y0uoj")
 [sub_resource type="TileSet" id="TileSet_jiuet"]
 sources/0 = SubResource("TileSetAtlasSource_ifup1")
 
+[sub_resource type="Gradient" id="Gradient_6g8ip"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2j00l"]
+gradient = SubResource("Gradient_6g8ip")
+fill = 1
+fill_from = Vector2(0.49583334, 0.47708333)
+fill_to = Vector2(0.85833335, 0.13541667)
+
 [node name="WorldObject" type="Node2D" unique_id=1541856081 node_paths=PackedStringArray("blue_tilemap", "red_tilemap", "walls")]
 script = ExtResource("1_2j00l")
 blue_tilemap = NodePath("blue_level")
 red_tilemap = NodePath("red_level")
 walls = NodePath("Walls")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2064339516]
+z_index = -1
+offset_left = -105.0
+offset_top = -875.0
+offset_right = 719.0
+offset_bottom = 414.0
+color = Color(0.05, 0.05, 0.05, 1)
 
 [node name="blue_level" type="TileMapLayer" parent="." unique_id=1466832045]
 tile_map_data = PackedByteArray("AAAVAAoAAAAGAAMAAAAWAAoAAAAHAAMAAAAXAAoAAAAHAAMAAAAYAAoAAAAHAAMAAAAZAAoAAAAHAAMAAAAaAAoAAAAHAAMAAAAVAAkAAAAGAAEAAAAWAAkAAAAHAAEAAAAXAAkAAAAHAAEAAAAYAAkAAAAHAAEAAAAZAAkAAAAHAAEAAAAaAAkAAAAHAAEAAAAbAAkAAAAHAAEAAAAbAAoAAAAHAAMAAAAcAAkAAAAHAAIAAAAcAAoAAAAHAAMAAAAdAAkAAAAIAAIAAAAdAAoAAAAIAAMAAAAdAAgAAAAIAAEAAAAcAAgAAAAGAAEAAAAXAPr/AAAGAAMAAAAYAPr/AAAIAAMAAAAXAPn/AAAGAAIAAAAXAPj/AAAGAAIAAAAXAPf/AAAGAAIAAAAXAPb/AAAGAAIAAAAXAPX/AAAGAAIAAAAXAPT/AAAHAAIAAAAWAPT/AAAHAAMAAAAVAPT/AAAHAAMAAAAUAPT/AAAHAAMAAAATAPT/AAAGAAMAAAATAPP/AAAGAAEAAAAYAPP/AAAIAAEAAAAUAPP/AAAHAAEAAAAVAPP/AAAHAAEAAAAWAPP/AAAHAAEAAAAXAPP/AAAHAAEAAAAYAPT/AAAIAAIAAAAYAPX/AAAIAAIAAAAYAPb/AAAIAAIAAAAYAPf/AAAIAAIAAAAYAPj/AAAIAAIAAAAYAPn/AAAIAAIAAAAOAOH/AAAHAAEAAAAOAOL/AAAHAAIAAAAOAOP/AAAGAAIAAAAOAOT/AAAGAAIAAAAOAOX/AAAGAAIAAAAPAOH/AAAIAAEAAAAPAOL/AAAIAAIAAAAPAOP/AAAIAAIAAAAPAOT/AAAIAAIAAAAPAOX/AAAIAAIAAAAKAOH/AAAGAAEAAAAKAOL/AAAGAAMAAAALAOH/AAAHAAEAAAALAOL/AAAHAAMAAAAMAOH/AAAHAAEAAAAMAOL/AAAHAAMAAAANAOH/AAAHAAEAAAANAOL/AAAHAAMAAAAOAOb/AAAGAAIAAAAOAOf/AAAGAAIAAAAOAOj/AAAHAAIAAAAPAOb/AAAIAAIAAAAPAOf/AAAIAAIAAAAPAOj/AAAHAAIAAAA=")
@@ -580,3 +597,33 @@ tile_set = SubResource("TileSet_ifup1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1935803811]
 tile_set = SubResource("TileSet_jiuet")
+
+[node name="Lights" type="Node2D" parent="." unique_id=361746155]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights" unique_id=777907017]
+position = Vector2(175, -743)
+color = Color(0.973665, 0.99, 0.6633, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_2j00l")
+texture_scale = 12.6
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights" unique_id=20704271]
+position = Vector2(415, -497)
+color = Color(0.973665, 0.99, 0.6633, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_2j00l")
+texture_scale = 9.99
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights" unique_id=1554856013]
+position = Vector2(278, -149)
+color = Color(0.973665, 0.99, 0.6633, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_2j00l")
+texture_scale = 9.55
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights" unique_id=2076345226]
+position = Vector2(407, 200)
+color = Color(0.973665, 0.99, 0.6633, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_2j00l")
+texture_scale = 11.29
