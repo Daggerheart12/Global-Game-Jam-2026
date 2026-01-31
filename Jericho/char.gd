@@ -6,3 +6,7 @@ extends Node2D
 
 func play_anim(anim_name: String) -> void:
 	animation_player.play(anim_name)
+
+
+func _ready() -> void:
+	play_anim("RUN")

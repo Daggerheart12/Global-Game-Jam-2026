@@ -1,39 +1,37 @@
 extends CharacterBody2D
 
 
-const SPEED :int= 100
 const JUMP_VELOCITY :int= -400
 const MAX_FALL_SPEED :int= 200
-const MAX_JUMP_QUEUE_MSEC :int= 100
-const MAX_C_TIME_MSEC :int= 100
+const MAX_JUMP_QUEUE_MSEC :int= 250
+const MAX_C_TIME_MSEC :int= 250
 const MIN_TIME_SCALE :float= 0.5
 
-var movement_speed :int= 200
+var movement_speed :int= 250
 var move_right :bool= true
 var last_queued_jump :int= 0
 var last_object_collision :int= 0
-var on_wall :bool= false
-var on_floor :bool= false
-@export var hp :float= 10
+var is_colliding :bool= false
+var jump_reloaded :bool= false #Touched the ground after jumping
+var can_use_queued_jump :bool= false
+
+@export var tilemap_controller :Node2D
+@export var s_collider :ShapeCast2D
+@export var player_sprite :Char
+
 func queue_jump():
 		last_queued_jump = Time.get_ticks_msec()
-		pass
+		
 
 func record_last_object_collision():
-	if on_floor and is_on_floor() == false:
-		on_floor = false
+	if (is_colliding and !s_collider.is_colliding()):
 		last_object_collision = Time.get_ticks_msec()
-
-	if on_wall and is_on_wall() == false:
-		on_wall = false
-		last_object_collision = Time.get_ticks_msec()
+		is_colliding = false
 
 func record_object_collisions():
-	if is_on_floor():
-		on_floor = true
-	
-	if is_on_wall():
-		on_wall = true
+	is_colliding = s_collider.is_colliding()
+
+
 		
 
 func ease_in_cubic(x: float) -> float:
@@ -51,24 +49,77 @@ func handle_time_scaling(delta):
 		Engine.time_scale = ease_in_cubic(time_scale_timer)
 
 func handle_air_movement():
-	if Input.is_action_pressed("Jump") and is_on_floor():
+
+	"""
+	if Input.is_action_just_pressed("Jump") and s_collider.is_colliding():
 		velocity.y = JUMP_VELOCITY
-	elif (Time.get_ticks_msec() - last_queued_jump) < MAX_JUMP_QUEUE_MSEC and is_on_floor():
+	elif (Time.get_ticks_msec() - last_queued_jump) < MAX_JUMP_QUEUE_MSEC and s_collider.is_colliding():
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("Jump") and (Time.get_ticks_msec() - last_object_collision) < MAX_C_TIME_MSEC and is_on_floor() == false:
+	elif Input.is_action_just_pressed("Jump") and (Time.get_ticks_msec() - last_object_collision) < MAX_C_TIME_MSEC and s_collider.is_colliding() == false:
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("Jump"):
+	elif Input.is_action_just_pressed("Jump"):
+		queue_jump()
+"""
+
+
+	var can_jump := false
+	var on_ground := false
+	var pressingJump := false
+	
+	if Input.is_action_just_pressed("Jump"):
+		pressingJump = true
+
+
+	if s_collider.is_colliding():
+		print("On ground")
+		jump_reloaded = true
+		on_ground = true
+
+	if on_ground and jump_reloaded:
+		can_jump = true
+	
+
+	if (Time.get_ticks_msec() - last_queued_jump) < MAX_JUMP_QUEUE_MSEC:
+		can_use_queued_jump = true
+	else:
+		can_use_queued_jump = false
+	
+	'''if (Time.get_ticks_msec() - last_object_collision) < MAX_C_TIME_MSEC and jump_reloaded: #c time
+		can_jump = true'''
+	
+	
+
+	if on_ground:
+		self.modulate = Color (0, 1, 0)
+	else:
+		self.modulate = Color (1, 0, 0)
+
+	if can_jump and pressingJump and jump_reloaded or can_use_queued_jump and on_ground:
+		velocity.y = JUMP_VELOCITY
+		jump_reloaded = false
+		can_use_queued_jump = false
+		last_queued_jump = 0
+	elif pressingJump:
 		queue_jump()
 
-	if Input.is_action_pressed("Jump") and is_on_wall():
-		velocity.y = JUMP_VELOCITY
-	elif (Time.get_ticks_msec() - last_queued_jump) < MAX_JUMP_QUEUE_MSEC and is_on_wall():
-		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("Jump") and (Time.get_ticks_msec() - last_object_collision) < MAX_C_TIME_MSEC and is_on_wall() == false:
-		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("Jump"):
-		queue_jump()
 
+
+	
+
+func var_jump(delta):
+	if is_on_floor() == false:
+		if velocity.y < 0 and Input.is_action_pressed("Jump") == false:
+			velocity.y += 4000 * delta
+
+var blue_level :bool= true
+func switch_tilemaps():
+	if Input.is_action_just_pressed("Switch"):
+		blue_level = !blue_level
+
+		if (blue_level):
+			tilemap_controller.switch_to_blue()
+		else:
+			tilemap_controller.switch_to_red()
 
 
 func handle_gravity(delta):
@@ -83,32 +134,41 @@ func handle_gravity(delta):
 func move():
 	if is_on_wall():
 		move_right = !move_right
-
+		player_sprite.sprite_2d.flip_h = false
 	if move_right:
 		velocity.x = movement_speed
 
 	if !move_right:
 		velocity.x = -movement_speed
+		player_sprite.sprite_2d.flip_h = true
 	
+
 	pass
 	
 var last_time_ms := Time.get_ticks_msec()
-
+	
 func _process(delta: float) -> void:		
+
+	'''if s_collider.is_colliding():
+		self.modulate = Color(1, 0, 0)
+	else:
+		self.modulate = Color(0, 1, 0)'''
+
 	var current_time_ms := Time.get_ticks_msec()	
 	var unscaled_delta = (current_time_ms - last_time_ms) / 1000.0
 	last_time_ms = current_time_ms
 	handle_time_scaling(unscaled_delta)	
+	switch_tilemaps()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	
-	
-
 	handle_gravity(delta)
-	record_object_collisions()
 	record_last_object_collision()	
+	record_object_collisions()
 	handle_air_movement()
+	#var_jump(delta)
+
 	move()
 
 	move_and_slide()
