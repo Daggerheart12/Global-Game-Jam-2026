@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bgesfqri6n5kn"]
+
+[ext_resource type="Theme" uid="uid://b1isuu0lcmwbl" path="res://Jericho/ui/general.tres" id="1_w0rq2"]
+[ext_resource type="Script" uid="uid://dv56vyvya0dn2" path="res://Jericho/ui/panels/pause_panel.gd" id="2_mx73g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mx73g"]
+bg_color = Color(0.1, 0.1, 0.1, 0.30980393)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxs5p"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PausePanel" type="PanelContainer" unique_id=266422431]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w0rq2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mx73g")
+script = ExtResource("2_mx73g")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=105875120]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxs5p")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=134302664]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1298275601]
+layout_mode = 2
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1412684889]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 128
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1390497207]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1407705587]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=781141636]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Main Menu"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

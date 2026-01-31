@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://b1isuu0lcmwbl"]
+
+[ext_resource type="FontFile" uid="uid://dfdr1wunft1jf" path="res://Jericho/ui/fonts/monogram.ttf" id="1_bikw8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nbxx"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bikw8"]
+
+[resource]
+default_font_size = 96
+Button/font_sizes/font_size = 80
+Button/fonts/font = ExtResource("1_bikw8")
+Button/styles/hover = SubResource("StyleBoxFlat_4nbxx")
+Button/styles/pressed = SubResource("StyleBoxEmpty_bikw8")
+Label/font_sizes/font_size = 96
+Label/fonts/font = ExtResource("1_bikw8")
