@@ -3,8 +3,6 @@
 [ext_resource type="Theme" uid="uid://b1isuu0lcmwbl" path="res://Jericho/ui/general.tres" id="1_vakgp"]
 [ext_resource type="StyleBox" uid="uid://dplkulcc0u3xg" path="res://Jericho/ui/styleboxes/stylebox_flat_black.tres" id="2_4vk8y"]
 [ext_resource type="Script" uid="uid://3pompr6h22ym" path="res://Jericho/ui/panels/game_over_panel.gd" id="3_4vk8y"]
-[ext_resource type="PackedScene" uid="uid://cjb3p7p726yth" path="res://game_folder/scenes/game_scene.tscn" id="4_mecn8"]
-[ext_resource type="PackedScene" uid="uid://bpvq5oowjtbgm" path="res://Jericho/ui/panels/main_menu_panel.tscn" id="5_0tob4"]
 
 [node name="GameOverPanel" type="PanelContainer" unique_id=266422431]
 anchors_preset = 15
@@ -17,8 +15,6 @@ grow_vertical = 2
 theme = ExtResource("1_vakgp")
 theme_override_styles/panel = ExtResource("2_4vk8y")
 script = ExtResource("3_4vk8y")
-main_level_scene = ExtResource("4_mecn8")
-main_menu_scene = ExtResource("5_0tob4")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=134302664]
 layout_mode = 2

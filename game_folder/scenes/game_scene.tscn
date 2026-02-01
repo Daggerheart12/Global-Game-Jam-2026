@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://20oxpbvmidip" path="res://game_folder/character/character.tscn" id="1_67iv3"]
 [ext_resource type="Script" uid="uid://cp5bkjpdir0qx" path="res://game_folder/Scripts/camera/camera_follow.gd" id="1_cshxh"]
 [ext_resource type="PackedScene" uid="uid://dv6b4wfn2h6y7" path="res://game_folder/objects/world_object.tscn" id="2_5dyal"]
+[ext_resource type="AudioStream" uid="uid://dgc43k4bye8te" path="res://Ben/mask knight.mp3" id="4_58jo5"]
 
 [node name="Node2D" type="Node2D" unique_id=1685437083]
 
@@ -13,8 +14,13 @@ script = ExtResource("1_cshxh")
 player = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=278527332 node_paths=PackedStringArray("tilemap_controller") instance=ExtResource("1_67iv3")]
-position = Vector2(497, -131)
+position = Vector2(508, -135)
 tilemap_controller = NodePath("../WorldObject")
 
 [node name="WorldObject" parent="." unique_id=1541856081 instance=ExtResource("2_5dyal")]
 position = Vector2(20, -370)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=483768585]
+stream = ExtResource("4_58jo5")
+volume_db = 6.0
+autoplay = true

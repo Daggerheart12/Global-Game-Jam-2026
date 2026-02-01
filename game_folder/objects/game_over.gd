@@ -10,5 +10,3 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_colliding():
 		get_tree().change_scene_to_packed(game_over_scene)
-
-
