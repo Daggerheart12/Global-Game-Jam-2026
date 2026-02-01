@@ -18,6 +18,8 @@ var can_use_queued_jump :bool= false
 @export var tilemap_controller :Node2D
 @export var s_collider :ShapeCast2D
 @export var player_sprite :Char
+@export var switch_sound :AudioStreamPlayer2D
+@export var jump_sound :AudioStreamPlayer2D
 
 func queue_jump():
 		last_queued_jump = Time.get_ticks_msec()
@@ -71,7 +73,6 @@ func handle_air_movement():
 
 
 	if s_collider.is_colliding():
-		print("On ground")
 		jump_reloaded = true
 		on_ground = true
 
@@ -87,18 +88,13 @@ func handle_air_movement():
 	'''if (Time.get_ticks_msec() - last_object_collision) < MAX_C_TIME_MSEC and jump_reloaded: #c time
 		can_jump = true'''
 	
-	
-
-	if on_ground:
-		self.modulate = Color (0, 1, 0)
-	else:
-		self.modulate = Color (1, 0, 0)
 
 	if can_jump and pressingJump and jump_reloaded or can_use_queued_jump and on_ground:
 		velocity.y = JUMP_VELOCITY
 		jump_reloaded = false
 		can_use_queued_jump = false
 		last_queued_jump = 0
+		jump_sound.play()
 	elif pressingJump:
 		queue_jump()
 
@@ -114,12 +110,15 @@ func var_jump(delta):
 var blue_level :bool= true
 func switch_tilemaps():
 	if Input.is_action_just_pressed("Switch"):
+		switch_sound.play()
 		blue_level = !blue_level
 
 		if (blue_level):
 			tilemap_controller.switch_to_blue()
+			self.modulate = Color((50.0/255.0), (150.0 / 255.0), 1, 1)
 		else:
 			tilemap_controller.switch_to_red()
+			self.modulate = Color(1, (50.0/255.0), (150.0 / 255.0), 1)
 
 
 func handle_gravity(delta):
@@ -149,10 +148,6 @@ var last_time_ms := Time.get_ticks_msec()
 	
 func _process(delta: float) -> void:		
 
-	'''if s_collider.is_colliding():
-		self.modulate = Color(1, 0, 0)
-	else:
-		self.modulate = Color(0, 1, 0)'''
 
 	var current_time_ms := Time.get_ticks_msec()	
 	var unscaled_delta = (current_time_ms - last_time_ms) / 1000.0
@@ -174,3 +169,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	
+func _ready() -> void:
+	self.modulate = Color((50.0/255.0), (150.0 / 255.0), 1, 1)

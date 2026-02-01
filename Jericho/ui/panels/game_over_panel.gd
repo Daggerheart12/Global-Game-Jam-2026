@@ -6,6 +6,8 @@ extends PanelContainer
 ## Scene to instance after pressing Main Menu
 @export var main_menu_scene: PackedScene
 
+func _ready():
+	pass
 
 func _on_restart_button_pressed() -> void:
 	get_tree().change_scene_to_packed(main_level_scene)

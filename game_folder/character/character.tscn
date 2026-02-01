@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dcienm8uyx84b" path="res://game_folder/Scripts/character/character_controller.gd" id="1_j3akq"]
 [ext_resource type="PackedScene" uid="uid://b3b8scmlmfyrd" path="res://game_folder/character/littledude.tscn" id="2_j3akq"]
+[ext_resource type="AudioStream" uid="uid://dddisyefg65j7" path="res://SFX/Jump/jump.wav" id="3_trocn"]
+[ext_resource type="AudioStream" uid="uid://ooxbf450ib6v" path="res://SFX/mask_swap/mask_swap2.wav" id="4_8sknn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3akq"]
 size = Vector2(107, 106)
@@ -9,12 +11,14 @@ size = Vector2(107, 106)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv70r"]
 size = Vector2(140, 120)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332 node_paths=PackedStringArray("s_collider", "player_sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=278527332 node_paths=PackedStringArray("s_collider", "player_sprite", "switch_sound", "jump_sound")]
 position = Vector2(2, 0)
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_j3akq")
 s_collider = NodePath("Boxcast")
 player_sprite = NodePath("KnightChar")
+switch_sound = NodePath("AudioStreamPlayer2D2")
+jump_sound = NodePath("AudioStreamPlayer2D")
 
 [node name="KnightChar" parent="." unique_id=1462190310 instance=ExtResource("2_j3akq")]
 
@@ -26,3 +30,9 @@ shape = SubResource("RectangleShape2D_j3akq")
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_hv70r")
 target_position = Vector2(0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1155976728]
+stream = ExtResource("3_trocn")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1746866464]
+stream = ExtResource("4_8sknn")
